@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-bottom: 50px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in;
+}
+
+.cube-wrapper {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 8s infinite linear;
+}
+
+.cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.9;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.front {
+    background: rgba(255, 87, 34, 0.8);
+    transform: rotateY(0deg) translateZ(100px);
+}
+
+.back {
+    background: rgba(33, 150, 243, 0.8);
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.right {
+    background: rgba(76, 175, 80, 0.8);
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.left {
+    background: rgba(233, 30, 99, 0.8);
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.top {
+    background: rgba(255, 193, 7, 0.8);
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+    background: rgba(156, 39, 176, 0.8);
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    
+    .cube-wrapper {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .cube {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .cube-face {
+        width: 150px;
+        height: 150px;
+        font-size: 18px;
+    }
+    
+    .front, .back {
+        transform: rotateY(var(--rotY, 0deg)) translateZ(75px);
+    }
+    
+    .right {
+        transform: rotateY(90deg) translateZ(75px);
+    }
+    
+    .left {
+        transform: rotateY(-90deg) translateZ(75px);
+    }
+    
+    .top, .bottom {
+        transform: rotateX(var(--rotX, 90deg)) translateZ(75px);
+    }
+}
